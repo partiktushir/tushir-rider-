@@ -1,0 +1,3034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UM RIDERS | Umesh Malik</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<style>
+    /* =========================
+   UM RIDERS - STYLE CSS
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #aca9a9;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+/* =========================
+   COLORS
+========================= */
+
+:root {
+    --red: #ff1744;
+    --dark-red: #b00020;
+    --white: #ffffff;
+    --gray: #a8a8a8;
+    --dark: #050505;
+    --card: rgba(255,255,255,0.05);
+}
+
+
+/* =========================
+   LOADER
+========================= */
+
+.loader {
+    position: fixed;
+    inset: 0;
+    background: #030303;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    animation: loaderHide 1s ease forwards;
+    animation-delay: 2.5s;
+}
+
+.loader-logo {
+    width: 100px;
+    height: 100px;
+
+    border: 2px solid var(--red);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 0 20px var(--red),
+        inset 0 0 20px rgba(255,23,68,0.3);
+
+    animation: loaderPulse 1s infinite alternate;
+}
+
+.loader-logo span {
+    font-family: "Orbitron", sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--red);
+}
+
+.loader p {
+    margin-top: 25px;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #aaa;
+}
+
+@keyframes loaderPulse {
+
+    from {
+        transform: scale(0.9);
+        box-shadow: 0 0 10px var(--red);
+    }
+
+    to {
+        transform: scale(1.1);
+        box-shadow:
+            0 0 40px var(--red),
+            inset 0 0 25px var(--red);
+    }
+}
+
+@keyframes loaderHide {
+
+    to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.bg-grid {
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+    background-size: 50px 50px;
+
+    z-index: -5;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent
+    );
+}
+
+.glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+
+    border-radius: 50%;
+
+    filter: blur(120px);
+
+    opacity: 0.12;
+
+    z-index: -4;
+}
+
+.glow-one {
+    background: var(--red);
+    top: -150px;
+    left: -150px;
+}
+
+.glow-two {
+    background: #ff003c;
+    right: -150px;
+    bottom: -150px;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: 100%;
+    height: 85px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(5,5,5,0.75);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+
+    animation: navDown 1s ease;
+}
+
+@keyframes navDown {
+
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: white;
+    text-decoration: none;
+}
+
+.logo-mark {
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid var(--red);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: skew(-8deg);
+
+    box-shadow: 0 0 15px rgba(255,23,68,0.5);
+
+    position: relative;
+}
+
+.logo-mark::before {
+    content: "";
+
+    position: absolute;
+    inset: 4px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.logo-mark span {
+    font-family: "Orbitron", sans-serif;
+    color: var(--red);
+    font-weight: 900;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text strong {
+    font-family: "Orbitron", sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.logo-text small {
+    color: var(--red);
+    font-size: 8px;
+    letter-spacing: 4px;
+}
+
+
+/* NAV LINKS */
+
+.navbar nav {
+    display: flex;
+    gap: 35px;
+}
+
+.navbar nav a {
+    color: #f3f1f1;
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    position: relative;
+
+    transition: 0.3s;
+}
+
+.navbar nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--red);
+
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: white;
+}
+
+.navbar nav a:hover::after {
+    width: 100%;
+}
+
+
+/* NAV BUTTON */
+
+.nav-btn {
+    text-decoration: none;
+
+    padding: 11px 20px;
+
+    border: 1px solid var(--red);
+
+    color: white;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.nav-btn:hover {
+    background: var(--red);
+    box-shadow: 0 0 25px rgba(255,23,68,0.5);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding: 140px 7% 70px;
+
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.1fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    position: relative;
+}
+
+
+/* HERO CONTENT */
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+
+    animation: heroLeft 1.2s ease;
+}
+
+@keyframes heroLeft {
+
+    from {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.small-title {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: #aaa;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+.small-title span {
+    width: 35px;
+    height: 1px;
+
+    background: var(--red);
+}
+
+
+/* MAIN HEADING */
+
+.hero h1 {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(55px, 8vw, 115px);
+
+    line-height: 0.9;
+
+    margin: 20px 0;
+
+    letter-spacing: -5px;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,0.05);
+}
+
+.hero h1 span {
+    display: block;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px var(--red);
+
+    text-shadow:
+        0 0 25px rgba(255,23,68,0.3);
+}
+
+
+/* SUB HEADING */
+
+.hero h2 {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 18px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 25px;
+}
+
+.hero h2 b {
+    color: var(--red);
+}
+
+
+/* DESCRIPTION */
+
+.hero-description {
+    max-width: 480px;
+
+    color: #8d8d8d;
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+
+/* HERO BUTTONS */
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 35px;
+}
+
+.main-btn {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 15px;
+
+    padding: 15px 25px;
+
+    background: var(--red);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 0 20px rgba(255,23,68,0.2);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.main-btn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(255, 254, 254, 0.2);
+
+    transform: skewX(-20deg);
+
+    transition: 0.5s;
+}
+
+.main-btn:hover::before {
+    left: 100%;
+}
+
+.main-btn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 30px rgba(255,23,68,0.35);
+}
+
+.round-btn {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    border: 1px solid #ddd5d5;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.round-btn:hover {
+    border-color: var(--red);
+
+    color: var(--red);
+
+    transform: rotate(360deg);
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: flex;
+
+    gap: 40px;
+
+    margin-top: 50px;
+
+    border-top: 1px solid #222;
+
+    padding-top: 25px;
+}
+
+.stats div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.stats strong {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 20px;
+
+    color: white;
+}
+
+.stats span {
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color: #666;
+}
+
+
+/* =========================
+   BIKE AREA
+========================= */
+
+.bike-area {
+    height: 650px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    animation: bikeArea 1.5s ease;
+}
+
+@keyframes bikeArea {
+
+    from {
+        opacity: 0;
+        transform: translateX(100px) scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+
+/* BIKE CIRCLE */
+
+.bike-circle {
+    position: absolute;
+
+    width: 470px;
+    height: 470px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,23,68,0.25);
+
+    box-shadow:
+        0 0 50px rgba(255,23,68,0.08),
+        inset 0 0 50px rgba(255,23,68,0.05);
+
+    animation: circleRotate 20s linear infinite;
+}
+
+.bike-circle::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 25px;
+
+    border-radius: 50%;
+
+    border: 1px dashed rgba(255,255,255,0.1);
+}
+
+@keyframes circleRotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* BIKE */
+
+.bike-image {
+    width: 650px;
+
+    position: relative;
+
+    z-index: 4;
+
+    animation: bikeFloat 4s ease-in-out infinite;
+}
+
+.bike-image img {
+    width: 100%;
+
+    display: block;
+
+    filter:
+        drop-shadow(0 25px 30px rgba(0,0,0,0.8))
+        drop-shadow(0 0 20px rgba(255,23,68,0.15));
+
+    transform: scaleX(-1);
+}
+
+@keyframes bikeFloat {
+
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(-1deg);
+    }
+}
+
+
+/* =========================
+   SPEED LINES
+========================= */
+
+.speed-line {
+    position: absolute;
+
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--red),
+        transparent
+    );
+
+    opacity: 0;
+
+    animation: speed 2s linear infinite;
+}
+
+.line1 {
+    width: 180px;
+    top: 32%;
+    right: 5%;
+}
+
+.line2 {
+    width: 120px;
+    top: 45%;
+    left: 2%;
+
+    animation-delay: 0.6s;
+}
+
+.line3 {
+    width: 200px;
+    bottom: 30%;
+    right: 0;
+
+    animation-delay: 1.2s;
+}
+
+@keyframes speed {
+
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(150px);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   BIKE LABEL
+========================= */
+
+.bike-label {
+    position: absolute;
+
+    bottom: 40px;
+    right: 15%;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: right;
+
+    z-index: 5;
+}
+
+.bike-label span {
+    color: #666;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+.bike-label strong {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 18px;
+
+    color: var(--red);
+}
+
+
+/* =========================
+   FLOATING CARDS
+========================= */
+
+.floating-card {
+    position: absolute;
+
+    padding: 15px;
+
+    min-width: 120px;
+
+    background: rgba(10,10,10,0.8);
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    backdrop-filter: blur(10px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    z-index: 10;
+
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+
+    animation: cardFloat 3s ease-in-out infinite;
+}
+
+.floating-card i {
+    color: var(--red);
+
+    font-size: 16px;
+
+    margin-bottom: 5px;
+}
+
+.floating-card span {
+    color: #666;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+.floating-card strong {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 12px;
+}
+
+.card-one {
+    left: 3%;
+    top: 25%;
+}
+
+.card-two {
+    right: 0;
+    top: 18%;
+
+    animation-delay: 1s;
+}
+
+@keyframes cardFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
+/* =========================
+   RIDERS SECTION
+========================= */
+
+.riders-section {
+    min-height: 100vh;
+
+    padding: 120px 7%;
+
+    position: relative;
+}
+
+.section-heading {
+    text-align: center;
+
+    margin-bottom: 70px;
+}
+
+.section-heading p,
+.section-tag {
+    color: var(--red);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 15px;
+}
+
+.section-heading h2,
+.about-content h2,
+.contact-section h2 {
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(35px, 5vw, 65px);
+
+    letter-spacing: -2px;
+}
+
+.section-heading h2 span,
+.about-content h2 span,
+.contact-section h2 span {
+    color: var(--red);
+}
+
+.heading-line {
+    width: 60px;
+    height: 2px;
+
+    background: var(--red);
+
+    margin: 20px auto;
+}
+
+
+/* RIDER CARD */
+
+.rider-card {
+    max-width: 950px;
+
+    margin: auto;
+
+    min-height: 420px;
+
+    padding: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 70px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.07),
+            rgba(255,255,255,0.015)
+        );
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    position: relative;
+
+    overflow: hidden;
+
+    transform-style: preserve-3d;
+
+    transition: 0.5s;
+}
+
+.rider-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    background: var(--red);
+
+    filter: blur(130px);
+
+    opacity: 0.08;
+
+    left: -100px;
+    top: -100px;
+}
+
+.rider-card:hover {
+    transform:
+        perspective(1000px)
+        rotateX(2deg)
+        rotateY(-2deg)
+        translateY(-10px);
+
+    border-color: rgba(255,23,68,0.3);
+}
+
+
+/* RIDER PHOTO */
+
+.rider-photo {
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #1a1a1a,
+            #050505
+        );
+
+    border: 1px solid #333;
+}
+
+.photo-ring {
+    position: absolute;
+
+    inset: -15px;
+
+    border: 1px solid var(--red);
+
+    border-radius: 50%;
+
+    border-top-color: transparent;
+
+    animation: ringSpin 6s linear infinite;
+}
+
+@keyframes ringSpin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rider-initial {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 80px;
+
+    font-weight: 900;
+
+    color: transparent;
+
+    -webkit-text-stroke: 2px var(--red);
+
+    text-shadow:
+        0 0 30px rgba(255,23,68,0.3);
+}
+
+
+/* RIDER INFO */
+
+.rider-role {
+    color: var(--red);
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+}
+
+.rider-info h3 {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 38px;
+
+    margin: 12px 0 20px;
+}
+
+.rider-info p {
+    color: #888;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    max-width: 450px;
+}
+
+.bike-name {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    padding: 10px 15px;
+
+    border: 1px solid #292929;
+
+    color: #aaa;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+.bike-name i {
+    color: var(--red);
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-section {
+    min-height: 80vh;
+
+    padding: 120px 7%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 100px;
+}
+
+.about-content p:not(.section-tag) {
+    max-width: 600px;
+
+    color: #888;
+
+    line-height: 1.9;
+
+    font-size: 14px;
+
+    margin-top: 25px;
+}
+
+
+/* ABOUT VISUAL */
+
+.about-visual {
+    height: 400px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    position: relative;
+}
+
+.big-logo {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(120px, 18vw, 240px);
+
+    font-weight: 900;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px rgba(255,23,68,0.5);
+
+    animation: logoPulse 3s ease-in-out infinite;
+
+    position: relative;
+}
+
+.big-logo::after {
+    content: "UM";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px rgba(255,255,255,0.05);
+
+    transform: translate(10px, 10px);
+
+    z-index: -1;
+}
+
+@keyframes logoPulse {
+
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 0 transparent;
+    }
+
+    50% {
+        transform: scale(1.05);
+        text-shadow: 0 0 50px rgba(255,23,68,0.25);
+    }
+}
+
+.about-visual span {
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    color: #555;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-section {
+    min-height: 65vh;
+
+    padding: 120px 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    position: relative;
+}
+
+.contact-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: var(--red);
+
+    filter: blur(180px);
+
+    opacity: 0.06;
+
+    z-index: -1;
+}
+
+.contact-section p:not(.section-tag) {
+    color: #777;
+
+    margin: 20px 0 35px;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    min-height: 100px;
+
+    padding: 30px 7%;
+
+    border-top: 1px solid #181818;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.footer-logo {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+.footer-logo span {
+    color: var(--red);
+}
+
+footer p {
+    color: #555;
+
+    font-size: 10px;
+}
+
+.socials {
+    display: flex;
+
+    gap: 10px;
+}
+
+.socials a {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #252525;
+
+    color: #888;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.socials a:hover {
+    color: var(--red);
+
+    border-color: var(--red);
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================
+   SELECTION
+========================= */
+
+::selection {
+    background: var(--red);
+
+    color: white;
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #292929;
+
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--red);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        padding-top: 130px;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .small-title {
+        justify-content: center;
+    }
+
+    .hero-description {
+        margin: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .stats {
+        justify-content: center;
+    }
+
+    .bike-area {
+        height: 500px;
+    }
+
+    .bike-image {
+        width: 600px;
+    }
+
+    .about-section {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .about-content p:not(.section-tag) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 0 20px;
+
+        height: 70px;
+    }
+
+    .navbar nav {
+        display: none;
+    }
+
+    .nav-btn {
+        padding: 9px 12px;
+
+        font-size: 9px;
+    }
+
+    .hero {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+
+        letter-spacing: -3px;
+    }
+
+    .hero h2 {
+        font-size: 13px;
+    }
+
+    .stats {
+        gap: 20px;
+    }
+
+    .stats strong {
+        font-size: 16px;
+    }
+
+    .bike-area {
+        height: 390px;
+    }
+
+    .bike-circle {
+        width: 300px;
+        height: 300px;
+    }
+
+    .bike-image {
+        width: 420px;
+    }
+
+    .floating-card {
+        display: none;
+    }
+
+    .bike-label {
+        bottom: 10px;
+        right: 5%;
+    }
+
+    .riders-section,
+    .about-section {
+        padding: 80px 20px;
+    }
+
+    .rider-card {
+        padding: 35px 20px;
+
+        flex-direction: column;
+
+        gap: 40px;
+
+        text-align: center;
+    }
+
+    .rider-photo {
+        width: 220px;
+        height: 220px;
+    }
+
+    .rider-initial {
+        font-size: 60px;
+    }
+
+    .rider-info h3 {
+        font-size: 28px;
+    }
+
+    .bike-name {
+        justify-content: center;
+    }
+
+    .about-section {
+        gap: 30px;
+    }
+
+    footer {
+        flex-direction: column;
+
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .logo-text {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+    }
+
+    .bike-image {
+        width: 350px;
+    }
+
+    .bike-circle {
+        width: 270px;
+        height: 270px;
+    }
+
+    .main-btn {
+        padding: 13px 18px;
+    }
+}
+/* =========================================
+   MOBILE NAVBAR ONLY
+========================================= */
+
+.menu-toggle {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    background: rgba(255, 254, 254, 0.04);
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    z-index: 10001;
+}
+
+.menu-toggle span {
+    width: 21px;
+    height: 2px;
+
+    background: #fff;
+
+    display: block;
+
+    transition: 0.3s ease;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 0 18px;
+    }
+
+
+    /* 3 LINE BUTTON */
+
+    .menu-toggle {
+        display: flex;
+    }
+
+
+    /* HIDE DESKTOP RIDE BUTTON */
+
+    .navbar > .nav-btn {
+        display: none;
+    }
+
+
+    /* MOBILE NAV */
+
+    .navbar nav {
+        position: fixed;
+
+        top: 78px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 15px 20px 20px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        background: rgba(230, 220, 220, 0.97);
+
+        backdrop-filter: blur(15px);
+
+        -webkit-backdrop-filter: blur(15px);
+
+        border-bottom:
+            1px solid rgba(255, 23, 68, 0.25);
+
+        transform: translateY(-120%);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transition:
+            transform 0.35s ease,
+            opacity 0.35s ease,
+            visibility 0.35s ease;
+
+        z-index: 10000;
+    }
+
+
+    /* MENU OPEN */
+
+    .navbar nav.active {
+        transform: translateY(0);
+
+        opacity: 1;
+
+        visibility: visible;
+    }
+
+
+    /* MOBILE LINKS */
+
+    .navbar nav a {
+        width: 100%;
+
+        padding: 15px 5px;
+
+        color: #aaa;
+
+        font-size: 11px;
+
+        border-bottom:
+            1px solid rgba(255,255,255,0.06);
+
+        text-align: left;
+    }
+
+
+    .navbar nav a:last-child {
+        border-bottom: none;
+    }
+
+
+    .navbar nav a:hover {
+        color: #ff1744;
+
+        padding-left: 12px;
+    }
+
+
+    /* HAMBURGER -> X */
+
+    .menu-toggle.active span:nth-child(1) {
+        transform:
+            translateY(7px)
+            rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform:
+            translateY(-7px)
+            rotate(-45deg);
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 400px) {
+
+    .navbar {
+        padding: 0 13px;
+    }
+
+    .logo-text strong {
+        font-size: 15px;
+    }
+
+    .logo-text small {
+        font-size: 6px;
+    }
+
+    .logo-mark {
+        width: 36px;
+        height: 36px;
+    }
+
+}
+/* =========================================
+   MOBILE NAVBAR + OVERFLOW FIX
+========================================= */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
+
+
+/* Navbar ko boundary ke andar rakho */
+
+.navbar {
+    width: 100%;
+    max-width: 100vw;
+    overflow: visible;
+}
+
+
+/* Hamburger */
+
+.menu-toggle {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    padding: 0;
+    margin: 0;
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    background: rgba(255,255,255,0.04);
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    cursor: pointer;
+
+    position: relative;
+
+    z-index: 10001;
+}
+
+
+.menu-toggle span {
+    display: block;
+
+    width: 20px;
+    height: 2px;
+
+    flex-shrink: 0;
+
+    background: #fff;
+
+    transition: 0.3s ease;
+}
+
+
+/* =========================================
+   PHONE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        width: 100%;
+        max-width: 100vw;
+
+        padding-left: 15px;
+        padding-right: 15px;
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+    }
+
+
+    /* Hamburger visible */
+
+    .menu-toggle {
+        display: flex;
+
+        position: relative;
+
+        right: 0;
+
+        margin-left: auto;
+    }
+
+
+    /* Ride With Us button hide */
+
+   .mobile-ride-btn {
+    display: none;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .mobile-ride-btn {
+        display: block !important;
+    }
+
+    .navbar nav a {
+        width: 100%;
+        padding: 15px 5px;
+        box-sizing: border-box;
+    }
+
+}
+
+
+    /* Mobile menu */
+
+    .navbar nav {
+        position: fixed;
+
+        top: 78px;
+
+        left: 0;
+
+        width: 100vw;
+        max-width: 100vw;
+
+        padding: 12px 18px;
+
+        background:
+            rgba(211, 199, 199, 0.98);
+
+        backdrop-filter: blur(15px);
+
+        -webkit-backdrop-filter: blur(15px);
+
+        border-bottom:
+            1px solid rgba(250, 246, 247, 0.2);
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        transform: translateY(-120%);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transition:
+            transform 0.35s ease,
+            opacity 0.35s ease,
+            visibility 0.35s ease;
+
+        z-index: 10000;
+
+        box-sizing: border-box;
+    }
+
+
+    .navbar nav.active {
+        transform: translateY(0);
+
+        opacity: 1;
+
+        visibility: visible;
+    }
+
+
+    .navbar nav a {
+        width: 100%;
+
+        max-width: 100%;
+
+        padding: 14px 5px;
+
+        box-sizing: border-box;
+
+        border-bottom:
+            1px solid rgba(252, 243, 243, 0.06);
+
+        color: #aaa;
+
+        font-size: 11px;
+
+        text-align: left;
+    }
+
+
+    .navbar nav a:last-child {
+        border-bottom: none;
+    }
+
+
+    /* Hamburger X */
+
+    .menu-toggle.active span:nth-child(1) {
+        transform:
+            translateY(7px)
+            rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform:
+            translateY(-7px)
+            rotate(-45deg);
+    }
+
+
+    /* Important: hero elements cannot create
+       horizontal scrolling */
+
+    .hero,
+    .hero-content,
+    .bike-area,
+    .bike-image,
+    .riders-section,
+    .about-section,
+    .contact-section,
+    footer {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+
+    .bike-image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONE
+========================================= */
+
+@media (max-width: 400px) {
+
+    .navbar {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+
+    .menu-toggle {
+        width: 39px;
+        height: 39px;
+    }
+
+
+    .menu-toggle span {
+        width: 19px;
+    }
+
+}
+.round-btn {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.round-btn.playing {
+    animation: musicPulse 1.2s infinite;
+}
+
+@keyframes musicPulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 23, 68, 0.6);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 23, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 23, 68, 0);
+    }
+
+}
+</style>
+<body>
+
+    <!-- LOADER -->
+    <div class="loader">
+        <div class="loader-logo">
+            <span>UM</span>
+        </div>
+        <p>STARTING THE RIDE...</p>
+    </div>
+
+
+    <!-- BACKGROUND EFFECT -->
+    <div class="bg-grid"></div>
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+    <a href="index.html" class="logo">
+
+        <div class="logo-mark">
+            <span>UM</span>
+        </div>
+
+        <div class="logo-text">
+            <strong>UM</strong>
+            <small>RIDERS</small>
+        </div>
+
+    </a>
+
+
+    <nav id="mainNav">
+
+        <a href="index.html">Home</a>
+
+        <a href="rider.html">Riders</a>
+
+        <a href="abot.html">About</a>
+
+        <a href="ridewithus.html" class="mobile-ride-btn">
+            Ride With Us
+        </a>
+
+    </nav>
+
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open Menu"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</header>
+
+    <!-- HERO -->
+    <main id="home">
+
+        <section class="hero">
+
+            <!-- LEFT CONTENT -->
+            <div class="hero-content">
+
+                <p class="small-title">
+                    <span></span>
+                    RIDING GROUP
+                </p>
+
+                <h1>
+                    UMESH
+                    <span>MALIK</span>
+                </h1>
+
+                <h2>
+                    RIDE. <b>EXPLORE.</b> REPEAT.
+                </h2>
+
+                <p class="hero-description">
+                    Welcome to UM Riders — a community built for
+                    passionate riders, long roads and unforgettable
+                    journeys.
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a href="rider.html" class="main-btn">
+                        EXPLORE RIDERS
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <button class="round-btn" id="musicBtn" type="button">
+    <i class="fa-solid fa-play"></i>
+</button>
+
+<audio id="bgMusic" loop>
+    <source src="Bairan - RaagWorld.mp3" type="audio/mpeg">
+</audio>
+
+                </div>
+
+
+                <!-- STATS -->
+                <div class="stats">
+
+                    <div>
+                        <strong>01</strong>
+                        <span>GROUP HEAD</span>
+                    </div>
+
+                    <div>
+                        <strong>N160</strong>
+                        <span>RIDE MACHINE</span>
+                    </div>
+
+                    <div>
+                        <strong>∞</strong>
+                        <span>ADVENTURES</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BIKE AREA -->
+            <div class="bike-area">
+
+                <div class="bike-circle"></div>
+
+                <div class="speed-line line1"></div>
+                <div class="speed-line line2"></div>
+                <div class="speed-line line3"></div>
+
+
+                <div class="bike-image">
+
+                    <img
+                        src="part.png"
+                        alt="Bajaj Pulsar N160"
+                    >
+
+                </div>
+
+
+                <div class="bike-label">
+
+                    <span>RIDE MACHINE</span>
+
+                    <strong>
+                        PULSAR N160
+                    </strong>
+
+                </div>
+
+
+                <div class="floating-card card-one">
+                    <i class="fa-solid fa-motorcycle"></i>
+                    <span>POWER</span>
+                    <strong>N160</strong>
+                </div>
+
+
+                <div class="floating-card card-two">
+                    <i class="fa-solid fa-road"></i>
+                    <span>ROAD</span>
+                    <strong>UNLIMITED</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RIDERS -->
+        <section id="riders" class="riders-section">
+
+            <div class="section-heading">
+
+                <p>THE CREW</p>
+
+                <h2>
+                    MEET THE <span>RIDERS</span>
+                </h2>
+
+                <div class="heading-line"></div>
+
+            </div>
+
+
+            <div class="rider-card">
+
+                <div class="rider-photo">
+
+                    <div class="photo-ring"></div>
+
+                    <div class="rider-initial">
+                        UM
+                    </div>
+
+                </div>
+
+
+                <div class="rider-info">
+
+                    <span class="rider-role">
+                        GROUP HEAD
+                    </span>
+
+                    <h3>
+                        UMESH MALIK
+                    </h3>
+
+                    <p>
+                        Leading the ride with passion,
+                        confidence and the love of two wheels.
+                        Every road is a new story.
+                    </p>
+
+
+                    <div class="bike-name">
+                        <i class="fa-solid fa-motorcycle"></i>
+                        BAJAJ PULSAR N160
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ABOUT -->
+        <section id="about" class="about-section">
+
+            <div class="about-content">
+
+                <p class="section-tag">
+                    OUR STORY
+                </p>
+
+                <h2>
+                    BORN TO
+                    <span>RIDE</span>
+                </h2>
+
+                <p>
+                    UM Riders is more than just a riding group.
+                    It is a brotherhood of people who believe
+                    that the best memories are made on the road.
+                </p>
+
+                <p>
+                    From city streets to open highways,
+                    we ride together, explore together and
+                    create memories together.
+                </p>
+
+            </div>
+
+
+            <div class="about-visual">
+
+                <div class="big-logo">
+                    UM
+                </div>
+
+                <span>
+                    RIDE WITH PASSION
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CONTACT -->
+        <section id="contact" class="contact-section">
+
+            <p class="section-tag">
+                JOIN THE ROAD
+            </p>
+
+            <h2>
+                READY TO
+                <span>RIDE?</span>
+            </h2>
+
+            <p>
+                Follow the journey of Umesh Malik and UM Riders.
+            </p>
+
+            <a href="#" class="main-btn">
+                JOIN UM RIDERS
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-logo">
+            <span>UM</span>
+            RIDERS
+        </div>
+
+        <p>
+            © 2026 UM Riders | Umesh Malik
+        </p>
+
+        <div class="socials">
+
+            <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="https://youtube.com/@riderumeshmalik?si=322yXVTWdwqyBSj_">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+/* =========================
+   UM RIDERS - SCRIPT.JS
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =========================
+       LOADER
+    ========================= */
+
+    const loader = document.querySelector(".loader");
+
+    setTimeout(() => {
+        if (loader) {
+            loader.style.pointerEvents = "none";
+        }
+    }, 2800);
+
+
+    /* =========================
+       NAVBAR SCROLL EFFECT
+    ========================= */
+
+    const navbar = document.querySelector(".navbar");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 50) {
+
+            navbar.style.background = "rgba(3, 3, 3, 0.95)";
+            navbar.style.boxShadow =
+                "0 10px 40px rgba(0,0,0,0.35)";
+
+        } else {
+
+            navbar.style.background =
+                "rgba(5,5,5,0.75)";
+
+            navbar.style.boxShadow = "none";
+        }
+
+    });
+
+
+    /* =========================
+       ACTIVE NAV LINK
+    ========================= */
+
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".navbar nav a");
+
+    function updateActiveLink() {
+
+        let current = "";
+
+        sections.forEach(section => {
+
+            const sectionTop =
+                section.offsetTop - 150;
+
+            const sectionHeight =
+                section.offsetHeight;
+
+            if (
+                window.scrollY >= sectionTop &&
+                window.scrollY < sectionTop + sectionHeight
+            ) {
+                current = section.getAttribute("id");
+            }
+
+        });
+
+        navLinks.forEach(link => {
+
+            link.style.color = "#aaa";
+
+            if (
+                link.getAttribute("href") ===
+                "#" + current
+            ) {
+                link.style.color = "#ff1744";
+            }
+
+        });
+
+    }
+
+    window.addEventListener("scroll", updateActiveLink);
+
+    updateActiveLink();
+
+
+    /* =========================
+       3D BIKE MOUSE MOVEMENT
+    ========================= */
+
+    const bike = document.querySelector(".bike-image");
+    const bikeArea = document.querySelector(".bike-area");
+
+    if (bike && bikeArea) {
+
+        bikeArea.addEventListener("mousemove", (event) => {
+
+            const rect =
+                bikeArea.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const centerX =
+                rect.width / 2;
+
+            const centerY =
+                rect.height / 2;
+
+            const rotateY =
+                ((x - centerX) / centerX) * 8;
+
+            const rotateX =
+                ((centerY - y) / centerY) * 5;
+
+            bike.style.transform =
+                `perspective(1000px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-8px)
+                 scale(1.03)`;
+
+        });
+
+
+        bikeArea.addEventListener("mouseleave", () => {
+
+            bike.style.transform =
+                "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
+
+        });
+
+    }
+
+
+    /* =========================
+       3D RIDER CARD
+    ========================= */
+
+    const riderCard =
+        document.querySelector(".rider-card");
+
+    if (riderCard) {
+
+        riderCard.addEventListener("mousemove", (event) => {
+
+            const rect =
+                riderCard.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const centerX =
+                rect.width / 2;
+
+            const centerY =
+                rect.height / 2;
+
+            const rotateX =
+                ((y - centerY) / centerY) * -3;
+
+            const rotateY =
+                ((x - centerX) / centerX) * 4;
+
+            riderCard.style.transform =
+                `perspective(1000px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-8px)`;
+
+        });
+
+
+        riderCard.addEventListener("mouseleave", () => {
+
+            riderCard.style.transform =
+                "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
+
+        });
+
+    }
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    const revealElements = document.querySelectorAll(
+        ".rider-card, .about-content, .about-visual, .contact-section"
+    );
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "show-reveal"
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+
+    revealElements.forEach(element => {
+
+        element.style.opacity = "0";
+
+        element.style.transform =
+            "translateY(50px)";
+
+        element.style.transition =
+            "opacity 0.8s ease, transform 0.8s ease";
+
+        revealObserver.observe(element);
+
+    });
+
+
+    /* =========================
+       REVEAL CLASS
+    ========================= */
+
+    const revealStyle =
+        document.createElement("style");
+
+    revealStyle.innerHTML = `
+
+        .show-reveal {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+    `;
+
+    document.head.appendChild(revealStyle);
+
+
+    /* =========================
+       PARALLAX BACKGROUND
+    ========================= */
+
+    const glowOne =
+        document.querySelector(".glow-one");
+
+    const glowTwo =
+        document.querySelector(".glow-two");
+
+    window.addEventListener("mousemove", (event) => {
+
+        const x =
+            (event.clientX / window.innerWidth - 0.5) * 30;
+
+        const y =
+            (event.clientY / window.innerHeight - 0.5) * 30;
+
+        if (glowOne) {
+
+            glowOne.style.transform =
+                `translate(${x}px, ${y}px)`;
+
+        }
+
+        if (glowTwo) {
+
+            glowTwo.style.transform =
+                `translate(${-x}px, ${-y}px)`;
+
+        }
+
+    });
+
+
+    /* =========================
+       FLOATING CARDS PARALLAX
+    ========================= */
+
+    const cards =
+        document.querySelectorAll(".floating-card");
+
+    window.addEventListener("mousemove", (event) => {
+
+        const mouseX =
+            (event.clientX / window.innerWidth - 0.5);
+
+        const mouseY =
+            (event.clientY / window.innerHeight - 0.5);
+
+        cards.forEach((card, index) => {
+
+            const amount =
+                index === 0 ? 15 : -15;
+
+            card.style.transform =
+                `translate(
+                    ${mouseX * amount}px,
+                    ${mouseY * amount}px
+                )`;
+
+        });
+
+    });
+
+
+    /* =========================
+       BUTTON RIPPLE EFFECT
+    ========================= */
+
+    const buttons =
+        document.querySelectorAll(".main-btn, .nav-btn");
+
+    buttons.forEach(button => {
+
+        button.addEventListener("click", function(event) {
+
+            const ripple =
+                document.createElement("span");
+
+            const rect =
+                button.getBoundingClientRect();
+
+            const size =
+                Math.max(
+                    rect.width,
+                    rect.height
+                );
+
+            ripple.style.width = size + "px";
+            ripple.style.height = size + "px";
+
+            ripple.style.left =
+                event.clientX -
+                rect.left -
+                size / 2 + "px";
+
+            ripple.style.top =
+                event.clientY -
+                rect.top -
+                size / 2 + "px";
+
+            ripple.style.position = "absolute";
+            ripple.style.borderRadius = "50%";
+            ripple.style.background =
+                "rgba(255,255,255,0.25)";
+            ripple.style.transform = "scale(0)";
+            ripple.style.pointerEvents = "none";
+
+            ripple.style.animation =
+                "buttonRipple 0.6s linear";
+
+            button.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+
+        });
+
+    });
+
+
+    /* =========================
+       RIPPLE CSS
+    ========================= */
+
+    const rippleStyle =
+        document.createElement("style");
+
+    rippleStyle.innerHTML = `
+
+        @keyframes buttonRipple {
+
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+
+        }
+
+    `;
+
+    document.head.appendChild(rippleStyle);
+
+
+    /* =========================
+       MOUSE GLOW CURSOR
+    ========================= */
+
+    const cursorGlow =
+        document.createElement("div");
+
+    cursorGlow.className =
+        "cursor-glow";
+
+    document.body.appendChild(cursorGlow);
+
+
+    const cursorStyle =
+        document.createElement("style");
+
+    cursorStyle.innerHTML = `
+
+        .cursor-glow {
+            position: fixed;
+            width: 180px;
+            height: 180px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,23,68,0.12),
+                    transparent 70%
+                );
+
+            pointer-events: none;
+
+            transform: translate(-50%, -50%);
+
+            z-index: 9998;
+
+            transition:
+                left 0.08s linear,
+                top 0.08s linear;
+
+        }
+
+        @media (max-width: 700px) {
+
+            .cursor-glow {
+                display: none;
+            }
+
+        }
+
+    `;
+
+    document.head.appendChild(cursorStyle);
+
+
+    document.addEventListener("mousemove", (event) => {
+
+        cursorGlow.style.left =
+            event.clientX + "px";
+
+        cursorGlow.style.top =
+            event.clientY + "px";
+
+    });
+
+
+    /* =========================
+       HOVER SOUND-LIKE EFFECT
+       ========================= */
+
+    const hoverElements =
+        document.querySelectorAll(
+            ".main-btn, .nav-btn, .round-btn, .socials a"
+        );
+
+    hoverElements.forEach(element => {
+
+        element.addEventListener("mouseenter", () => {
+
+            element.style.transform +=
+                " scale(1.03)";
+
+        });
+
+    });
+
+
+    /* =========================
+       RANDOM SPEED LINE
+    ========================= */
+
+    const speedLines =
+        document.querySelectorAll(".speed-line");
+
+    setInterval(() => {
+
+        speedLines.forEach(line => {
+
+            line.style.animation =
+                "none";
+
+            void line.offsetWidth;
+
+            line.style.animation =
+                "speed 2s linear infinite";
+
+        });
+
+    }, 5000);
+
+
+    /* =========================
+       CONSOLE
+    ========================= */
+
+    console.log(
+        "%c UM RIDERS ",
+        "background:#ff1744;color:white;font-size:20px;padding:10px;"
+    );
+
+    console.log(
+        "Ride. Explore. Repeat. 🏍️"
+    );
+
+});
+
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+
+if (menuToggle && mainNav) {
+
+    menuToggle.addEventListener("click", function () {
+
+        menuToggle.classList.toggle("active");
+        mainNav.classList.toggle("active");
+
+    });
+
+
+    mainNav.querySelectorAll("a").forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            menuToggle.classList.remove("active");
+            mainNav.classList.remove("active");
+
+        });
+
+    });
+
+}
+/* =========================================
+   BACKGROUND MUSIC
+========================================= */
+
+const musicBtn = document.getElementById("musicBtn");
+const bgMusic = document.getElementById("bgMusic");
+
+if (musicBtn && bgMusic) {
+
+    musicBtn.addEventListener("click", function () {
+
+        if (bgMusic.paused) {
+
+            bgMusic.play()
+                .then(() => {
+
+                    musicBtn.classList.add("playing");
+
+                    musicBtn.innerHTML =
+                        '<i class="fa-solid fa-pause"></i>';
+
+                })
+                .catch((error) => {
+
+                    console.log("Music play error:", error);
+
+                });
+
+        } else {
+
+            bgMusic.pause();
+
+            musicBtn.classList.remove("playing");
+
+            musicBtn.innerHTML =
+                '<i class="fa-solid fa-play"></i>';
+
+        }
+
+    });
+
+}
+/* =========================================
+   CLOSE MENU ON SCROLL
+========================================= */
+
+window.addEventListener("scroll", function () {
+
+    if (mainNav.classList.contains("active")) {
+
+        mainNav.classList.remove("active");
+        menuToggle.classList.remove("active");
+
+    }
+
+});
+    </script>
+
+</body>
+</html>
